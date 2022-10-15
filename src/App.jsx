@@ -22,11 +22,12 @@ const App = () => {
       justifyContent='center'
       alignItems='flex-start'
       bg='teal.400'
+      p='10px'
     >
       <Box
         w='xl'
         bg='white'
-        p='3rem 4rem'
+        p={{ base: '3rem 2rem', md: '3rem 4rem' }}
         borderRadius='10px'
         shadow='md'
         mt='10rem'
