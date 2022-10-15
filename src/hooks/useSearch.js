@@ -15,16 +15,18 @@ export const useSearch = (keyword) => {
   }, [keyword]);
 
   const processingSearch = () => {
+    const regex = new RegExp(keyword, 'gi');
+
     const matchedSuggestions = Suggestion.filter((suggestion) => {
-      return suggestion.term.toLowerCase().includes(keyword);
+      return regex.test(suggestion.term);
     });
 
-    const matchedCollections = Collections.filter((suggestion) => {
-      return suggestion.title.toLocaleLowerCase().includes(keyword);
+    const matchedCollections = Collections.filter((collection) => {
+      return regex.test(collection.title);
     });
 
-    const matchedProducts = Products.filter((suggestion) => {
-      return suggestion.title.toLowerCase().includes(keyword);
+    const matchedProducts = Products.filter((product) => {
+      return regex.test(product.title);
     });
 
     setSuggestions(matchedSuggestions);
